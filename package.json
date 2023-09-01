@@ -1,0 +1,63 @@
+{
+  "name": "vx-table",
+  "version": "1.0.1",
+  "private": false,
+  "description": "一个基于 vxe-table 二次封装的组件，适用于 vue2.0",
+  "author": "Jason Chen",
+  "main": "dist/vxTable.umd.min.js",
+  "files": [
+    "dist/*",
+    "public"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib ./src/components/index.js --name vxTable"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vxe-table": "^3.6.13",
+    "vue": "^2.6.14",
+    "core-js": "^3.8.3",
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "element-ui": "^2.15.14",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcyicai/vx-table.git"
+  },
+  "keywords": [
+    "vxe-table",
+    "vx-table",
+    "el-table",
+    "table",
+    "vue-table",
+    "vue",
+    "vue2.0",
+    "element",
+    "element-ui",
+    "componets"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcyicai/vx-table/issues"
+  },
+  "homepage": "https://github.com/jcyicai/vx-table#readme"
+}
