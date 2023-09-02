@@ -8,11 +8,7 @@ import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 Vue.use(VXETable)
 
-import { baseNumFormat } from '@/utils'
-
 Vue.config.productionTip = false
-
-Vue.prototype.$baseNumFormat = baseNumFormat
 
 new Vue({
 	render: h => h(App)

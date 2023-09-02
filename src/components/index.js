@@ -1,11 +1,16 @@
-import VxTable from './VxTable/index.vue'
+import VxTable from './VxTable'
 
-const coms = [VxTable]
+const components = [VxTable]
 
 const install = function (Vue) {
-	coms.forEach(com => {
-		Vue.component(com.name, com)
+	components.forEach(component => {
+		Vue.component(component.name, component)
 	})
+}
+
+// 判断是否直接引入文件，如果是，就不用调用 Vue.use()
+if (typeof window !== 'undefined' && window.Vue) {
+	install(window.Vue)
 }
 
 export default install
