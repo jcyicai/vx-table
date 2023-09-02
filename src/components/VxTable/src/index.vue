@@ -289,17 +289,17 @@ export default {
 						const curColumnItem = this.initColumns.find(item => item.prop === column.property)
 						// 累加当前行
 						const sumNum = this.getSumNum(data, column)
-						currentMergeCell = sumNum
-						/* sumNum || sumNum === 0
+						currentMergeCell =
+							sumNum || sumNum === 0
 								? baseNumFormat(sumNum, curColumnItem?.format?.digits || 2, 's', curColumnItem?.format?.zeroFill)
-								: '' */
+								: ''
 						// 所有数据总和
 						if (this.showFooterAllTotal) {
 							const sumAllNum = this.getSumAllNum(column)
-							allMergeCell = sumAllNum
-							/* 	sumAllNum || sumAllNum === 0
+							allMergeCell =
+								sumAllNum || sumAllNum === 0
 									? baseNumFormat(sumAllNum, curColumnItem?.format?.digits || 2, 's', curColumnItem?.format?.zeroFill)
-									: '' */
+									: ''
 						}
 					}
 					totalRowData.push(currentMergeCell)
