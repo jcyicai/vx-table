@@ -64,10 +64,6 @@ export default {
 </script>
 
 <style lang="scss">
-body,
-html {
-	margin: 0;
-}
 #app {
 	padding: 14px;
 	.mt-14 {

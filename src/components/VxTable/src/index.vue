@@ -387,22 +387,14 @@ export default {
 :deep(.vxe-footer--column) {
 	background-color: #f5f7fa !important;
 	background-repeat: no-repeat;
-	background-size:
-		1px 100%,
-		100% 1px;
-	background-position:
-		100% 0,
-		100% 100%;
+	background-size: 1px 100%, 100% 1px;
+	background-position: 100% 0, 100% 100%;
 }
 :deep(.vxe-header--column) {
 	background-color: #f5f7fa !important;
 	background-repeat: no-repeat;
-	background-size:
-		1px 100%,
-		100% 1px;
-	background-position:
-		100% 0,
-		100% 100%;
+	background-size: 1px 100%, 100% 1px;
+	background-position: 100% 0, 100% 100%;
 }
 
 // vxe table 高度调整 以及 form 提示显示时高度

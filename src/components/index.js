@@ -8,9 +8,8 @@ const install = function (Vue) {
 	})
 }
 
-// 判断是否直接引入文件，如果是，就不用调用 Vue.use()
 if (typeof window !== 'undefined' && window.Vue) {
 	install(window.Vue)
 }
 
-export default { install, VxTable }
+export default { install, ...components }
