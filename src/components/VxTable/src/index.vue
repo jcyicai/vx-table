@@ -28,11 +28,15 @@
       @cell-click="handleCellClick"
       :scroll-x="{ enabled: false }"
       :scroll-y="{ enabled: true }" -->
-			<vxe-column v-if="showSelect" type="checkbox" align="center" width="50"></vxe-column>
-			<vxe-column v-if="showSerial" type="seq" align="center" title="序号" width="50"></vxe-column>
+			<slot name="custom-checkbox">
+				<vxe-column v-if="showSelect" type="checkbox" align="center" width="50"></vxe-column>
+			</slot>
+			<slot name="seq">
+				<vxe-column v-if="showSerial" type="seq" align="center" title="序号" width="50"></vxe-column>
+			</slot>
 			<vxe-column v-if="showExpand" type="expand" width="50" align="center">
 				<template #content="{ row, rowIndex }">
-					<slot name="expand-content" :row="row" :row-index="rowIndex"></slot>
+					<slot name="expand-content" :row="row" :rowIndex="rowIndex"></slot>
 				</template>
 			</vxe-column>
 
@@ -286,19 +290,29 @@ export default {
 					let allMergeCell = null
 					if (this.totalColumns.includes(column.property)) {
 						// 查找当前 column format
-						const curColumnItem = this.initColumns.find(item => item.prop === column.property)
+						const curColumnItem = this.columns.find(item => item.prop === column.property)
 						// 累加当前行
 						const sumNum = this.getSumNum(data, column)
 						currentMergeCell =
 							sumNum || sumNum === 0
-								? baseNumFormat(sumNum, curColumnItem?.format?.digits || 2, 's', curColumnItem?.format?.zeroFill)
+								? `${curColumnItem?.format?.prefix || ''}${baseNumFormat(
+										sumNum,
+										curColumnItem?.format?.digits || 2,
+										's',
+										curColumnItem?.format?.zeroFill
+								  )}`
 								: ''
 						// 所有数据总和
 						if (this.showFooterAllTotal) {
 							const sumAllNum = this.getSumAllNum(column)
 							allMergeCell =
 								sumAllNum || sumAllNum === 0
-									? baseNumFormat(sumAllNum, curColumnItem?.format?.digits || 2, 's', curColumnItem?.format?.zeroFill)
+									? `${curColumnItem?.format?.prefix || ''}${baseNumFormat(
+											sumAllNum,
+											curColumnItem?.format?.digits || 2,
+											's',
+											curColumnItem?.format?.zeroFill
+									  )}`
 									: ''
 						}
 					}
@@ -320,7 +334,11 @@ export default {
 			} else  */
 			if (format.type === 'number') {
 				// 数字
-				value = val || val === 0 ? baseNumFormat(val, format.digits || 2, 's', format.zeroFill) : ''
+				value = `${
+					val || val === 0
+						? `${format.prefix || ''}${baseNumFormat(val, format.digits || 2, 's', format.zeroFill)}`
+						: ''
+				}`
 			}
 			return value
 		},
@@ -384,13 +402,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:deep(.vxe-footer--column) {
+::v-deep .vxe-footer--column {
 	background-color: #f5f7fa !important;
 	background-repeat: no-repeat;
 	background-size: 1px 100%, 100% 1px;
 	background-position: 100% 0, 100% 100%;
 }
-:deep(.vxe-header--column) {
+::v-deep .vxe-header--column {
 	background-color: #f5f7fa !important;
 	background-repeat: no-repeat;
 	background-size: 1px 100%, 100% 1px;
@@ -399,22 +417,28 @@ export default {
 
 // vxe table 高度调整 以及 form 提示显示时高度
 .resize-cell {
-	:deep(.vxe-body--column) {
+	::v-deep .vxe-body--column {
 		height: 72px !important;
 	}
 
-	:deep(.vxe-cell) {
+	::v-deep .vxe-cell {
 		max-height: 68px !important;
 	}
 }
 
 // 表头 必填 星号 大小 原先13px 会压缩星号显示
-:deep(.vxe-header--column .vxe-cell--required-icon) {
+::v-deep .vxe-header--column .vxe-cell--required-icon {
 	font-size: 14px;
 }
 
 .page-box {
 	text-align: center;
 	margin-top: 14px;
+}
+
+// 添加 checkbox 禁用时 背景色 原 无背景色
+::v-deep .vxe-cell--checkbox.is--disabled > .vxe-checkbox--icon {
+	background: #eee;
+	border-radius: 3px;
 }
 </style>

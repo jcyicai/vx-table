@@ -120,6 +120,10 @@ export default {
 	created() {},
 	mounted() {},
 	methods: {
+		// 是否为对象
+		isObject(val) {
+			return Object.prototype.toString.call(val) === '[object Object]'
+		},
 		// 格式化列内容
 		formatValue(val, format) {
 			// 1 日期  2 数字
@@ -130,7 +134,11 @@ export default {
 			} else  */
 			if (format.type === 'number') {
 				// 数字
-				value = val || val === 0 ? baseNumFormat(val, format.digits || 2, 's', format.zeroFill) : ''
+				value = `${
+					val || val === 0
+						? `${format.prefix || ''}${baseNumFormat(val, format.digits || 2, 's', format.zeroFill)}`
+						: ''
+				}`
 			}
 			return value
 		}

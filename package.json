@@ -1,6 +1,6 @@
 {
   "name": "vx-table",
-  "version": "0.0.6",
+  "version": "1.0.8",
   "private": false,
   "description": "一个基于 vxe-table 二次封装的组件，适用于 vue2.0",
   "author": "Jason Chen",
@@ -31,8 +31,8 @@
     "sass-loader": "8.0.2",
     "vue": "2.6.14",
     "vue-template-compiler": "2.6.14",
-    "vxe-table": "^3.6.13",
-    "xe-utils": "^3.5.13"
+    "vxe-table": "3.6.13",
+    "xe-utils": "3.5.13"
   },
   "peerDependencies": {
     "vue": "^2.6.14",
