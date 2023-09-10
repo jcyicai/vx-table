@@ -20,7 +20,7 @@
 ## 安装
 
 ```shell
-npm install vxe-table@3.6.13 vxe-table-plugin-element@3.0.7 element-ui@2.5.14 vx-table@1.0.8
+npm install vxe-table@3.6.13 vxe-table-plugin-element@3.0.7 element-ui@2.5.14 vx-table
 ```
 
 ## npm

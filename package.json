@@ -1,6 +1,6 @@
 {
   "name": "vx-table",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "private": false,
   "description": "一个基于 vxe-table 二次封装的组件，适用于 vue2.0",
   "author": "Jason Chen",
